@@ -1,20 +1,72 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content [fullscreen]="true"
+[scrollEvents]="true"
+(ionScrollStart)="logScrollStart()"
+(ionScroll)="logScrolling($event)"
+(ionScrollEnd)="logScrollEnd()">
+<ion-fab vertical="top" horizontal="end" slot="fixed">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ionic-row>
+  <ionic-col>
+    <ion-searchbar></ion-searchbar>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Restaurante</ion-card-subtitle>
+        <ion-card-title>Dolores</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="wine" slot="start"></ion-icon>
+          <ion-label>Es un restaurante extremadamente bueno, lo recomiendo ampliamente</ion-label>
+          <ion-badge color="primary">11</ion-badge>
+          <ion-label>Comentarios</ion-label>
+          <ion-button>Ver más</ion-button>
+        </ion-item>
+        <ion-list>
+          <ion-item>
+            <ion-label>Excelente Atención</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Estacionamiento Incluido</ion-label>
+            <ion-progress-bar value="0.5"></ion-progress-bar>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <ion-label>Me interesa</ion-label>
+          <ion-checkbox></ion-checkbox>
+          <ion-chip>
+            <ion-label>Marcar</ion-label>
+          </ion-chip>          
+        </ion-item>
+        <ion-item>
+          <ion-input>Dejar comentario</ion-input>
+          <ion-toggle>Anonimo</ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Opinion</ion-label>
+          <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="brown">Buena</ion-select-option>
+            <ion-select-option value="blonde">Regular</ion-select-option>
+            <ion-select-option value="black">Mala</ion-select-option>
+            <ion-select-option value="red">Muy mala</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-datetime presentation="time"></ion-datetime>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="friends">
+        <ion-label>Restaurantes</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="enemies">
+        <ion-label>Bares</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ionic-col>
+</ionic-row>
 </ion-content>
